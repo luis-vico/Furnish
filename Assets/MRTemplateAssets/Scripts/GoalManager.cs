@@ -79,9 +79,6 @@ public class GoalManager : MonoBehaviour
     LazyFollow m_GoalPanelLazyFollow;
 
     [SerializeField]
-    GameObject m_TapTooltip;
-
-    [SerializeField]
     GameObject m_VideoPlayer;
 
     [SerializeField]
@@ -110,8 +107,6 @@ public class GoalManager : MonoBehaviour
         m_OnboardingGoals.Enqueue(endGoal);
 
         m_CurrentGoal = m_OnboardingGoals.Dequeue();
-        if (m_TapTooltip != null)
-            m_TapTooltip.SetActive(false);
 
         if (m_VideoPlayer != null)
         {
@@ -202,10 +197,6 @@ public class GoalManager : MonoBehaviour
                     m_GoalPanelLazyFollow.positionFollowMode = LazyFollow.PositionFollowMode.Follow;
                     break;
                 case OnboardingGoals.TapSurface:
-                    if (m_TapTooltip != null)
-                    {
-                        m_TapTooltip.SetActive(true);
-                    }
                     m_GoalPanelLazyFollow.positionFollowMode = LazyFollow.PositionFollowMode.None;
                     break;
             }
@@ -216,9 +207,6 @@ public class GoalManager : MonoBehaviour
     {
         if (m_CurrentGoal.CurrentGoal == OnboardingGoals.TapSurface)
             m_ObjectSpawner.objectSpawned -= OnObjectSpawned;
-
-        // disable tooltips before setting next goal
-        DisableTooltips();
 
         m_CurrentGoal.Completed = true;
         m_CurrentGoalIndex++;
@@ -268,16 +256,6 @@ public class GoalManager : MonoBehaviour
         m_ARPlaneManager.enabled = true;
     }
 
-    void DisableTooltips()
-    {
-        if (m_CurrentGoal.CurrentGoal == OnboardingGoals.TapSurface)
-        {
-            if (m_TapTooltip != null)
-            {
-                m_TapTooltip.SetActive(false);
-            }
-        }
-    }
 
     public void ForceCompleteGoal()
     {
@@ -347,9 +325,6 @@ public class GoalManager : MonoBehaviour
 
         m_CurrentGoal = m_OnboardingGoals.Dequeue();
         m_AllGoalsFinished = false;
-
-        if (m_TapTooltip != null)
-            m_TapTooltip.SetActive(false);
 
         if (m_LearnButton != null)
         {
