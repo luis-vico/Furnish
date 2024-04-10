@@ -167,7 +167,7 @@ namespace UnityEngine.XR.Interaction.Toolkit.Samples.ARStarterAssets
             }
         }
 
-        public void SetObjectToSpawn(int objectIndex)
+        public void SetObjectToSpawn(GameObject furniture)
         {
             if (m_ObjectSpawner == null)
             {
@@ -175,14 +175,7 @@ namespace UnityEngine.XR.Interaction.Toolkit.Samples.ARStarterAssets
             }
             else
             {
-                if (m_ObjectSpawner.objectPrefabs.Count > objectIndex)
-                {
-                    m_ObjectSpawner.spawnOptionIndex = objectIndex;
-                }
-                else
-                {
-                    Debug.LogWarning("Object Spawner not configured correctly: object index larger than number of Object Prefabs.");
-                }
+                m_ObjectSpawner.objToSpawn = furniture;
             }
 
             HideMenu();
