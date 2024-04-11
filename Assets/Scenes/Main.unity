@@ -3980,7 +3980,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_ObjectSpawner: {fileID: 985866601}
-  testObj: {fileID: 5765088748426752163, guid: 7905da53b462883428142bc5e46defb2, type: 3}
+  editPlatform: {fileID: 6554309837740089695, guid: b8dcdeaeee1205b4b84bfb3f422b0588, type: 3}
+  testObj: {fileID: 4998762802436478141, guid: c91164437053b8c4292f18f8e3502896, type: 3}
 --- !u!4 &1732410181 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5310702087570344806, guid: 58011bca9681c484080084eccc4cb150, type: 3}

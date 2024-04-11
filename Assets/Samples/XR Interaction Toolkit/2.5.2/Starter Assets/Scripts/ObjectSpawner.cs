@@ -121,7 +121,7 @@ namespace UnityEngine.XR.Interaction.Toolkit.Samples.StarterAssets
         /// </summary>
         /// 
 
-        public GameObject objToSpawn; 
+        [HideInInspector] public GameObject objToSpawn; 
 
         void Awake()
         {

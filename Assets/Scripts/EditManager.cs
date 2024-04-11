@@ -14,9 +14,19 @@ namespace UnityEngine.XR.Interaction.Toolkit.Samples.ARStarterAssets
             set => m_ObjectSpawner = value;
         }
 
+        [SerializeField] GameObject editPlatform;
         [SerializeField] GameObject testObj;
 
+
+
         public void SofaEdit(){
+            var cPos = Camera.main.transform;
+            //editPlatform.transform.position = cPos.position;
+            editPlatform.transform.position = new Vector3(cPos.position.x, 0, cPos.position.z);
+            editPlatform.transform.rotation = new Quaternion(0, cPos.rotation.y, 0, cPos.rotation.w);
+            editPlatform.transform.position += editPlatform.transform.forward * 2;
+            //editPlatform.transform.position = new Vector3(editPlatform.transform.position.x, 0, editPlatform.transform.position.z);
+            Instantiate(editPlatform);
             SetObjectToSpawn(testObj);
         }
 
