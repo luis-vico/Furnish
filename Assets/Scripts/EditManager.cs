@@ -15,6 +15,7 @@ namespace UnityEngine.XR.Interaction.Toolkit.Samples.ARStarterAssets
         }
 
         [SerializeField] GameObject editPlatform;
+        [SerializeField] GameObject EditScreens;
         [SerializeField] GameObject testObj;
 
         void Awake(){
@@ -31,6 +32,8 @@ namespace UnityEngine.XR.Interaction.Toolkit.Samples.ARStarterAssets
             editPlatform.transform.position = new Vector3(cPos.position.x, 0, cPos.position.z);
             editPlatform.transform.rotation = new Quaternion(0, cPos.rotation.y, 0, cPos.rotation.w);
             editPlatform.transform.position += editPlatform.transform.forward * 1; //1 Meter entfernt
+
+            EditScreens.transform.position = new Vector3(editPlatform.transform.position.x, cPos.position.y, editPlatform.transform.position.z);
             editPlatform.SetActive(true);
 
             switch(editNum){
