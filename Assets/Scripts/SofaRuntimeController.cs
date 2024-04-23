@@ -11,7 +11,6 @@ using AXGeometry;
 using AX.Generators;
 
 
-
 public class SofaRuntimeController : AXRuntimeControllerBase {
 
 
@@ -107,8 +106,7 @@ public class SofaRuntimeController : AXRuntimeControllerBase {
 
 	// Outside of the above automatically generated region, you can add any code you like.
 
-
-
+	private int count = 0;
 
 
 	// The Start function must be present and 
@@ -146,14 +144,16 @@ public class SofaRuntimeController : AXRuntimeControllerBase {
 		string localPath = "Assets/Furniture/" + model.name + ".prefab";
 		//localPath = AssetDatabase.GenerateUniqueAssetPath(localPath);
 
-		if (model.generatedGameObjects != null)
-		{
-			string prefabName = model.name;
-			model.build();
-			GameObject stampedGO = model.stamp ();
-			stampedGO.name = prefabName;
-		}
+		string objName = model.name + "_" + count.ToString();
+		model.build();
+		GameObject stampedGO = model.stamp();
+		stampedGO.name = objName;
+		count++;
+
+
+
 	}
 
 }
+
 
