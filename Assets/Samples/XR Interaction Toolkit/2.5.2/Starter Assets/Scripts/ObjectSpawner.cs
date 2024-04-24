@@ -27,21 +27,6 @@ namespace UnityEngine.XR.Interaction.Toolkit.Samples.StarterAssets
         }
 
         [SerializeField]
-        [Tooltip("Optional prefab to spawn for each spawned object. Use a prefab with the Destroy Self component to make " +
-            "sure the visualization only lives temporarily.")]
-        GameObject m_SpawnVisualizationPrefab;
-
-        /// <summary>
-        /// Optional prefab to spawn for each spawned object.
-        /// </summary>
-        /// <remarks>Use a prefab with <see cref="DestroySelf"/> to make sure the visualization only lives temporarily.</remarks>
-        public GameObject spawnVisualizationPrefab
-        {
-            get => m_SpawnVisualizationPrefab;
-            set => m_SpawnVisualizationPrefab = value;
-        }
-
-        [SerializeField]
         [Tooltip("Whether to only spawn an object if the spawn point is within view of the camera.")]
         bool m_OnlySpawnInView = true;
 
@@ -97,19 +82,6 @@ namespace UnityEngine.XR.Interaction.Toolkit.Samples.StarterAssets
             set => m_SpawnAngleRange = value;
         }
 
-        [SerializeField]
-        [Tooltip("Whether to spawn each object as a child of this object.")]
-        bool m_SpawnAsChildren;
-
-        /// <summary>
-        /// Whether to spawn each object as a child of this object.
-        /// </summary>
-        public bool spawnAsChildren
-        {
-            get => m_SpawnAsChildren;
-            set => m_SpawnAsChildren = value;
-        }
-
         /// <summary>
         /// Event invoked after an object is spawned.
         /// </summary>
@@ -160,8 +132,8 @@ namespace UnityEngine.XR.Interaction.Toolkit.Samples.StarterAssets
             }
 
             var newObject = Instantiate(objToSpawn);
-            if (m_SpawnAsChildren)
-                newObject.transform.parent = transform;
+
+            newObject.transform.SetParent(gameObject.transform);
 
             newObject.transform.position = spawnPoint;
             EnsureFacingCamera();
@@ -175,13 +147,6 @@ namespace UnityEngine.XR.Interaction.Toolkit.Samples.StarterAssets
             {
                 var randomRotation = Random.Range(-m_SpawnAngleRange, m_SpawnAngleRange);
                 newObject.transform.Rotate(Vector3.up, randomRotation);
-            }
-
-            if (m_SpawnVisualizationPrefab != null)
-            {
-                var visualizationTrans = Instantiate(m_SpawnVisualizationPrefab).transform;
-                visualizationTrans.position = spawnPoint;
-                visualizationTrans.rotation = newObject.transform.rotation;
             }
 
             objectSpawned?.Invoke(newObject);

@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEditor;
-using Random = UnityEngine.Random;
+using System;
 
 using AX;
 
@@ -106,7 +106,7 @@ public class SofaRuntimeController : AXRuntimeControllerBase {
 
 	// Outside of the above automatically generated region, you can add any code you like.
 
-	private int count = 0;
+	public static event Action<GameObject> spawnFurniture;
 
 
 	// The Start function must be present and 
@@ -144,13 +144,11 @@ public class SofaRuntimeController : AXRuntimeControllerBase {
 		string localPath = "Assets/Furniture/" + model.name + ".prefab";
 		//localPath = AssetDatabase.GenerateUniqueAssetPath(localPath);
 
-		string objName = model.name + "_" + count.ToString();
+		//string objName = model.name + "_" + count.ToString();
 		model.build();
-		GameObject stampedGO = model.stamp();
-		stampedGO.name = objName;
-		count++;
-
-
+		//GameObject stampedGO = model.stamp();
+		//stampedGO.name = objName;
+		spawnFurniture?.Invoke(model.stamp());
 
 	}
 

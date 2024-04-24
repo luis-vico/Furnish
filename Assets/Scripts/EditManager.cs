@@ -9,6 +9,8 @@ namespace UnityEngine.XR.Interaction.Toolkit.Samples.ARStarterAssets
 
         [SerializeField] ObjectSpawner m_ObjectSpawner;
 
+        [SerializeField] GameObject SpawnTrigger;
+
         public ObjectSpawner objectSpawner{
             get => m_ObjectSpawner;
             set => m_ObjectSpawner = value;
@@ -22,6 +24,13 @@ namespace UnityEngine.XR.Interaction.Toolkit.Samples.ARStarterAssets
             editPlatform.SetActive(false);
         }
 
+        void OnEnable(){
+            SofaRuntimeController.spawnFurniture += transferToSpawner;
+        }
+        void OnDisable(){
+            SofaRuntimeController.spawnFurniture -= transferToSpawner;
+        }
+
         public void changePlatform(){
             var cPos = Camera.main.transform;
             editPlatform.transform.position = new Vector3(cPos.position.x, 0, cPos.position.z);
@@ -31,17 +40,24 @@ namespace UnityEngine.XR.Interaction.Toolkit.Samples.ARStarterAssets
 
             EditScreens.transform.position = new Vector3(editPlatform.transform.position.x, cPos.position.y, editPlatform.transform.position.z);
             editPlatform.SetActive(true);
-            //SetObjectToSpawn(testObj);
         }
 
-        public void SetObjectToSpawn(GameObject furniture)
-        {
+        private void transferToSpawner(GameObject furniture){
             if (m_ObjectSpawner == null){
                 Debug.LogWarning("Object Spawner not configured correctly: no ObjectSpawner set.");
             }
             else{
+                furniture.transform.parent = m_ObjectSpawner.transform;
                 m_ObjectSpawner.objToSpawn = furniture;
             }
+            m_ObjectSpawner.TrySpawnObject(
+                new Vector3(
+                    editPlatform.transform.position.x,
+                    0,
+                    editPlatform.transform.position.z
+                ),
+                new Vector3(0,1,0)
+            );
         }
 
     }

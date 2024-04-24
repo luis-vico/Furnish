@@ -16,7 +16,6 @@ public class SpawnedObjectsManager : MonoBehaviour
     void OnEnable()
     {
         m_Spawner = GetComponent<ObjectSpawner>();
-        m_Spawner.spawnAsChildren = true;
 
         m_DestroyObjectsButton.onClick.AddListener(OnDestroyObjectsButtonClicked);
     }
