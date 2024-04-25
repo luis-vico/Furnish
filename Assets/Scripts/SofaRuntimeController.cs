@@ -141,7 +141,7 @@ public class SofaRuntimeController : AXRuntimeControllerBase {
 	}
 
 	public void saveFurniture(){
-		string localPath = "Assets/Furniture/" + model.name + ".prefab";
+		//string localPath = "Assets/Furniture/" + model.name + ".prefab";
 		//localPath = AssetDatabase.GenerateUniqueAssetPath(localPath);
 
 		//string objName = model.name + "_" + count.ToString();
