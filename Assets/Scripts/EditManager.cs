@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.XR.Interaction.Toolkit.Samples.StarterAssets;
 using UnityEngine.XR.Interaction.Toolkit.AffordanceSystem.Rendering;
+using UnityEngine.XR.Interaction.Toolkit.AffordanceSystem.State;
 
 namespace UnityEngine.XR.Interaction.Toolkit.Samples.ARStarterAssets
 {
@@ -12,7 +13,7 @@ namespace UnityEngine.XR.Interaction.Toolkit.Samples.ARStarterAssets
 
         [SerializeField] Material furnitureMaterial;
 
-        [SerializeField] GameObject FurniturePreset;
+        [SerializeField] public GameObject InteractionAffordance;
 
         public ObjectSpawner objectSpawner{
             get => m_ObjectSpawner;
@@ -53,21 +54,8 @@ namespace UnityEngine.XR.Interaction.Toolkit.Samples.ARStarterAssets
                 furniture.AddComponent<MeshFilter>();
                 furniture.AddComponent<MeshRenderer>();
                 furniture.AddComponent<MeshCombiner>();
+                furniture.GetComponent<MeshCombiner>().interactionAffordance = InteractionAffordance;
                 furniture.GetComponent<MeshRenderer>().material = furnitureMaterial;
-                //GameObject finishedFurniture = Instantiate(FurniturePreset, editPlatform.transform);
-
-                //var FurnBoxCollider = finishedFurniture.GetComponent<BoxCollider>();
-                //FurnBoxCollider.center = new Vector3(0,FurnBoxCollider.size.y / 2,0);
-                //finishedFurniture.transform.GetChild(0).GetChild(0).GetComponent<MaterialPropertyBlockHelper>().rendererTarget = furniture.GetComponent<MeshRenderer>();
-
-                //furniture.transform.parent = finishedFurniture.transform;
-                //finishedFurniture.transform.parent = m_ObjectSpawner.transform;
-                BoxCollider boxCollider = furniture.AddComponent<BoxCollider>();
-                furniture.GetComponent<BoxCollider>().center = new Vector3(0,furniture.GetComponent<BoxCollider>().size.y / 2,0);
-                furniture.GetComponent<BoxCollider>().size = furniture.GetComponent<Renderer>().bounds.size;
-
-                furniture.AddComponent<Rigidbody>();
-                furniture.GetComponent<Rigidbody>().isKinematic = true;
 
                 furniture.transform.parent = m_ObjectSpawner.transform;
                 m_ObjectSpawner.objToSpawn = furniture;

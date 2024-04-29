@@ -7206,6 +7206,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Environment: {fileID: 1241364534}
   fadeSpeed: 1
+--- !u!114 &1241364541
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1241364534}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 24386a87b5e733943809081267792754, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_PermittedRotationAxis: -1
 --- !u!1 &1255075760
 GameObject:
   m_ObjectHideFlags: 0
@@ -92750,7 +92763,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_ObjectSpawner: {fileID: 985866601}
   furnitureMaterial: {fileID: 2100000, guid: 377a24320b3adeb438edc10508f4ced8, type: 2}
-  FurniturePreset: {fileID: 889722507888254793, guid: 563411cdd48b4bd4682267417a0cd2f8, type: 3}
+  InteractionAffordance: {fileID: 8496761215831759558, guid: 3e8b67e0e30ec45468ad9a98bd9ebf8c, type: 3}
   editPlatform: {fileID: 1083525720}
   EditScreens: {fileID: 317267960}
   testObj: {fileID: 4998762802436478141, guid: c91164437053b8c4292f18f8e3502896, type: 3}
@@ -93002,6 +93015,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 996bc95e1b6dfc847aead2de66dc4a91, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1241364538}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 996bc95e1b6dfc847aead2de66dc4a91, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1241364541}
   m_SourcePrefab: {fileID: 100100000, guid: 996bc95e1b6dfc847aead2de66dc4a91, type: 3}
 --- !u!1 &1817172522
 GameObject:
@@ -95449,6 +95465,10 @@ PrefabInstance:
       propertyPath: m_ObjectSelectorDropdown
       value: 
       objectReference: {fileID: 0}
+    - target: {fileID: 4968769839778511794, guid: 8b4d02b4e05af714dab2a12548a310f8, type: 3}
+      propertyPath: InteractionAffordance
+      value: 
+      objectReference: {fileID: 8496761215831759558, guid: 3e8b67e0e30ec45468ad9a98bd9ebf8c, type: 3}
     - target: {fileID: 5143189979198810980, guid: 8b4d02b4e05af714dab2a12548a310f8, type: 3}
       propertyPath: m_AnchorMax.x
       value: 1

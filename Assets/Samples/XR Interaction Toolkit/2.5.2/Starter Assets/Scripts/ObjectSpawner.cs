@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using UnityEngine.XR.Interaction.Toolkit.Utilities;
+using UnityEngine.XR.Interaction.Toolkit.AffordanceSystem.Rendering;
 
 namespace UnityEngine.XR.Interaction.Toolkit.Samples.StarterAssets
 {
@@ -132,8 +133,6 @@ namespace UnityEngine.XR.Interaction.Toolkit.Samples.StarterAssets
             }
 
             var newObject = Instantiate(objToSpawn);
-
-            newObject.transform.SetParent(gameObject.transform);
 
             newObject.transform.position = spawnPoint;
             EnsureFacingCamera();

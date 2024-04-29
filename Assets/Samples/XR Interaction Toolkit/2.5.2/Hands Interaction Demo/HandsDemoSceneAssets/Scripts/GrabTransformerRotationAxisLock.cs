@@ -40,5 +40,9 @@ namespace UnityEngine.XR.Interaction.Toolkit.Samples.Hands
 
             targetPose.rotation = Quaternion.Euler(newRotationEuler);
         }
+        public void SetPermittedRotationAxes(XRGeneralGrabTransformer.ManipulationAxes axes)
+        {
+            m_PermittedRotationAxis = axes;
+        }
     }
 }
