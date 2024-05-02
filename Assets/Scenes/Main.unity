@@ -92764,6 +92764,7 @@ MonoBehaviour:
   m_ObjectSpawner: {fileID: 985866601}
   furnitureMaterial: {fileID: 2100000, guid: 377a24320b3adeb438edc10508f4ced8, type: 2}
   InteractionAffordance: {fileID: 8496761215831759558, guid: 3e8b67e0e30ec45468ad9a98bd9ebf8c, type: 3}
+  DeleteButton: {fileID: 7871119705292266726, guid: bd69d3976958ace41beaa1192e83f891, type: 3}
   editPlatform: {fileID: 1083525720}
   EditScreens: {fileID: 317267960}
   testObj: {fileID: 4998762802436478141, guid: c91164437053b8c4292f18f8e3502896, type: 3}

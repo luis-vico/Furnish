@@ -16,6 +16,7 @@ namespace UnityEngine.XR.Interaction.Toolkit.Samples.ARStarterAssets
     public class MeshCombiner : MonoBehaviour
     {
         public GameObject interactionAffordance;
+        public GameObject deleteButton;
 
         // Start is called before the first frame update
         void Start()
@@ -83,13 +84,19 @@ namespace UnityEngine.XR.Interaction.Toolkit.Samples.ARStarterAssets
             Debug.Log("GrabTransformerRotationAxisLock added");
             
             
-            while(interactionAffordance == null){
+            while(interactionAffordance == null || deleteButton == null){
                 Debug.Log("wait");
             }
             GameObject iAffordance = Instantiate(interactionAffordance, gameObject.transform);
             iAffordance.transform.GetChild(0).GetComponent<MaterialPropertyBlockHelper>().rendererTarget = gameObject.GetComponent<MeshRenderer>();
             iAffordance.SetActive(true);
             Debug.Log("InteractionAffordance added");
+
+            GameObject dButton = Instantiate(deleteButton, gameObject.transform);
+            Debug.Log("DeleteButton added");
+
+            xrGrab.hoverEntered.AddListener((e) => dButton.SetActive(true));
+            xrGrab.hoverExited.AddListener((e) => dButton.SetActive(false));
 
         }
 
