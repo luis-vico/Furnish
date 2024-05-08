@@ -18,6 +18,8 @@ namespace UnityEngine.XR.Interaction.Toolkit.Samples.ARStarterAssets
         public GameObject interactionAffordance;
         public GameObject deleteButton;
 
+        bool CR_running = false;
+
         // Start is called before the first frame update
         void Start()
         {
@@ -95,9 +97,31 @@ namespace UnityEngine.XR.Interaction.Toolkit.Samples.ARStarterAssets
             GameObject dButton = Instantiate(deleteButton, gameObject.transform);
             Debug.Log("DeleteButton added");
 
-            xrGrab.hoverEntered.AddListener((e) => dButton.SetActive(true));
-            xrGrab.hoverExited.AddListener((e) => dButton.SetActive(false));
+            xrGrab.hoverEntered.AddListener((e) => StartCoroutine(dButtonFade(dButton)));
+            //xrGrab.hoverExited.AddListener((e) => dButton.SetActive(false));
 
+        }
+
+        IEnumerator dButtonFade(GameObject button){
+            CanvasGroup cgroup = button.GetComponent<CanvasGroup>();
+            if(CR_running){
+                yield break;
+                cgroup.alpha = 1;
+            }
+            CR_running = true;
+            button.SetActive(true);
+            float fadeSpeed = 2;
+            cgroup.alpha = 1;
+            float alphaValue = cgroup.alpha;
+            yield return new WaitForSeconds(2.5f);
+            while (cgroup.alpha > 0f)
+            {
+                alphaValue -= Time.deltaTime / fadeSpeed;
+                cgroup.alpha = alphaValue;
+                yield return null;
+            }
+            CR_running = false;
+            yield return 0;
         }
 
 
