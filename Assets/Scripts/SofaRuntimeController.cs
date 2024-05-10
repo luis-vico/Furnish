@@ -5,6 +5,7 @@ using UnityEditor;
 using System;
 
 using AX;
+using UnityEngine.UI;
 
 
 using AXGeometry;
@@ -88,7 +89,9 @@ public class SofaRuntimeController : AXRuntimeControllerBase {
 
 	// *** DYNAMIC_VARIABLES *** //
 
-
+	public GameObject sliderX;
+	public GameObject sliderY;
+	public GameObject sliderZ;
 
 	// *** PARAMETER_REFERENCE_INIT *** //
 
@@ -150,6 +153,18 @@ public class SofaRuntimeController : AXRuntimeControllerBase {
 		//stampedGO.name = objName;
 		spawnFurniture?.Invoke(model.stamp());
 
+	}
+
+	public void setX(){
+		Grouper_2_SizeX = sliderX.GetComponent<Slider>().value;
+	}
+
+	public void setY(){
+		Grouper_2_SizeY = sliderY.GetComponent<Slider>().value;
+	}
+
+	public void setZ(){
+		Grouper_2_SizeZ = sliderZ.GetComponent<Slider>().value;
 	}
 
 }

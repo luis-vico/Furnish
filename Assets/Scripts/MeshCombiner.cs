@@ -106,7 +106,6 @@ namespace UnityEngine.XR.Interaction.Toolkit.Samples.ARStarterAssets
             CanvasGroup cgroup = button.GetComponent<CanvasGroup>();
             if(CR_running){
                 yield break;
-                cgroup.alpha = 1;
             }
             CR_running = true;
             button.SetActive(true);
