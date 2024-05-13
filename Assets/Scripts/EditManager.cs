@@ -23,7 +23,6 @@ namespace UnityEngine.XR.Interaction.Toolkit.Samples.ARStarterAssets
 
         [SerializeField] GameObject editPlatform;
         [SerializeField] GameObject EditScreens;
-        [SerializeField] GameObject testObj;
 
         void Awake(){
             editPlatform.SetActive(false);
@@ -31,9 +30,11 @@ namespace UnityEngine.XR.Interaction.Toolkit.Samples.ARStarterAssets
 
         void OnEnable(){
             SofaRuntimeController.spawnFurniture += transferToSpawner;
+            TableRuntimeController.spawnFurniture += transferToSpawner;
         }
         void OnDisable(){
             SofaRuntimeController.spawnFurniture -= transferToSpawner;
+            TableRuntimeController.spawnFurniture -= transferToSpawner;
         }
 
         public void changePlatform(){
