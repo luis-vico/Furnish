@@ -23,6 +23,7 @@ namespace UnityEngine.XR.Interaction.Toolkit.Samples.ARStarterAssets
 
         [SerializeField] GameObject editPlatform;
         [SerializeField] GameObject EditScreens;
+        [SerializeField] GameObject EditScreensMoveable;
 
         void Awake(){
             editPlatform.SetActive(false);
@@ -31,10 +32,12 @@ namespace UnityEngine.XR.Interaction.Toolkit.Samples.ARStarterAssets
         void OnEnable(){
             SofaRuntimeController.spawnFurniture += transferToSpawner;
             TableRuntimeController.spawnFurniture += transferToSpawner;
+            WardrobeRuntimeController.spawnFurniture += transferToSpawner;
         }
         void OnDisable(){
             SofaRuntimeController.spawnFurniture -= transferToSpawner;
             TableRuntimeController.spawnFurniture -= transferToSpawner;
+            WardrobeRuntimeController.spawnFurniture -= transferToSpawner;
         }
 
         public void changePlatform(){
@@ -45,6 +48,7 @@ namespace UnityEngine.XR.Interaction.Toolkit.Samples.ARStarterAssets
             editPlatform.transform.RotateAround(editPlatform.transform.position, transform.up, 180f);
 
             EditScreens.transform.position = new Vector3(editPlatform.transform.position.x, cPos.position.y, editPlatform.transform.position.z);
+            EditScreensMoveable.transform.position = new Vector3(editPlatform.transform.position.x, cPos.position.y - 0.3f, editPlatform.transform.position.z);
             editPlatform.SetActive(true);
         }
 
