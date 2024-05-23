@@ -19,10 +19,10 @@ MonoBehaviour:
     leftHandLocalPosition: {x: 0.05, y: -0.02, z: -0.17}
     rightHandLocalRotation: {x: 0, y: 0, z: -270}
     leftHandLocalRotation: {x: 0, y: 0, z: 270}
-    palmReferenceAxis: 0
+    palmReferenceAxis: 3
     invertAxisForRightHand: 1
     requirePalmFacingUser: 1
-    palmFacingUserDegreeAngleThreshold: 54
+    palmFacingUserDegreeAngleThreshold: 55
     requirePalmFacingUp: 0
     palmFacingUpDegreeAngleThreshold: 72
     snapToGaze: 0
