@@ -119,6 +119,7 @@ namespace UnityEngine.XR.Interaction.Toolkit.Samples.ARStarterAssets
                 cgroup.alpha = alphaValue;
                 yield return null;
             }
+            button.SetActive(false);
             CR_running = false;
             yield return 0;
         }

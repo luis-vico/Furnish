@@ -63,6 +63,7 @@ namespace UnityEngine.XR.Interaction.Toolkit.Samples.ARStarterAssets
                 furniture.GetComponent<MeshCombiner>().interactionAffordance = InteractionAffordance;
                 furniture.GetComponent<MeshCombiner>().deleteButton = DeleteButton;
                 furniture.GetComponent<MeshRenderer>().material = furnitureMaterial;
+                furniture.layer = 8;
 
                 furniture.transform.parent = m_ObjectSpawner.transform;
                 m_ObjectSpawner.objToSpawn = furniture;

@@ -122,20 +122,20 @@ namespace UnityEngine.XR.Interaction.Toolkit.Samples.StarterAssets
         {
             if (m_OnlySpawnInView)
             {
-                var inViewMin = m_ViewportPeriphery;
-                var inViewMax = 1f - m_ViewportPeriphery;
-                var pointInViewportSpace = cameraToFace.WorldToViewportPoint(spawnPoint);
-                if (pointInViewportSpace.z < 0f || pointInViewportSpace.x > inViewMax || pointInViewportSpace.x < inViewMin ||
-                    pointInViewportSpace.y > inViewMax || pointInViewportSpace.y < inViewMin)
-                {
+                //var inViewMin = m_ViewportPeriphery;
+                //var inViewMax = 1f - m_ViewportPeriphery;
+                //var pointInViewportSpace = cameraToFace.WorldToViewportPoint(spawnPoint);
+                //if (pointInViewportSpace.z < 0f || pointInViewportSpace.x > inViewMax || pointInViewportSpace.x < inViewMin ||
+                //    pointInViewportSpace.y > inViewMax || pointInViewportSpace.y < inViewMin)
+                //{
                     return false;
-                }
+                //}
             }
 
             var newObject = Instantiate(objToSpawn);
 
             newObject.transform.position = spawnPoint;
-            EnsureFacingCamera();
+            //EnsureFacingCamera();
                 
             var facePosition = m_CameraToFace.transform.position;
             var forward = facePosition - spawnPoint;
