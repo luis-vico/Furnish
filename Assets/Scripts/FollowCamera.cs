@@ -9,11 +9,15 @@ public class FollowCamera : MonoBehaviour
 
     public Camera camera;
 
+    public GameObject arrow;
+
     void Update()
     {
         transform.position = new Vector3(targetObj.transform.position.x, 0, targetObj.transform.position.z);
+
         if(rotEnable){
-            transform.rotation = new Quaternion(transform.rotation.x, targetObj.transform.rotation.y, transform.rotation.z, transform.rotation.w);
+            transform.rotation = new Quaternion(transform.rotation.x, targetObj.transform.rotation.y, transform.rotation.z, targetObj.transform.rotation.w);
+
         }
         
     }
@@ -21,20 +25,22 @@ public class FollowCamera : MonoBehaviour
     public void changeRot(){
         if(rotEnable){
             rotEnable = false;
-            transform.rotation = new Quaternion(transform.rotation.x, 0, transform.rotation.z, transform.rotation.w);
         }else{
             rotEnable = true;
+            //arrow.transform.rotation = new Quaternion(90, 0, 45, arrow.transform.rotation.w);
         }
     }
 
     public void sizePlus(){
         if(camera.orthographicSize <= 8){
             camera.orthographicSize = camera.orthographicSize + 0.5f;
+            arrow.transform.localScale = new Vector3(camera.orthographicSize/28, camera.orthographicSize/28, camera.orthographicSize/28);
         }    
     }
     public void sizeMinus(){
         if(camera.orthographicSize >= 1){
             camera.orthographicSize = camera.orthographicSize - 0.5f;
+            arrow.transform.localScale = new Vector3(camera.orthographicSize/28, camera.orthographicSize/28, camera.orthographicSize/28);
         } 
 
     }
