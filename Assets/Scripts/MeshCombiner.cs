@@ -17,6 +17,8 @@ namespace UnityEngine.XR.Interaction.Toolkit.Samples.ARStarterAssets
     {
         public GameObject interactionAffordance;
         public GameObject deleteButton;
+        public Material collisionMaterial;
+        public Material furnitureMaterial;
 
         bool CR_running = false;
 
@@ -64,8 +66,9 @@ namespace UnityEngine.XR.Interaction.Toolkit.Samples.ARStarterAssets
             Debug.Log("BoxCollider added");
 
             gameObject.AddComponent<Rigidbody>();
-            gameObject.GetComponent<Rigidbody>().isKinematic = true;
+            gameObject.GetComponent<Rigidbody>().isKinematic = false;
             gameObject.GetComponent<Rigidbody>().useGravity = false;
+            gameObject.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezeRotation | RigidbodyConstraints.FreezePosition;
             Debug.Log("Rigidbody added");
 
             gameObject.AddComponent<XRGrabInteractable>();
@@ -86,7 +89,7 @@ namespace UnityEngine.XR.Interaction.Toolkit.Samples.ARStarterAssets
             Debug.Log("GrabTransformerRotationAxisLock added");
             
             
-            while(interactionAffordance == null || deleteButton == null){
+            while(interactionAffordance == null || deleteButton == null || collisionMaterial == null || furnitureMaterial == null){
                 Debug.Log("wait");
             }
             GameObject iAffordance = Instantiate(interactionAffordance, gameObject.transform);
@@ -99,6 +102,11 @@ namespace UnityEngine.XR.Interaction.Toolkit.Samples.ARStarterAssets
 
             xrGrab.hoverEntered.AddListener((e) => StartCoroutine(dButtonFade(dButton)));
             //xrGrab.hoverExited.AddListener((e) => dButton.SetActive(false));
+
+            gameObject.AddComponent<CollisionMaterialChange>();
+            gameObject.GetComponent<CollisionMaterialChange>().collisionMaterial = collisionMaterial;
+            gameObject.GetComponent<CollisionMaterialChange>().furnitureMaterial = furnitureMaterial;
+            Debug.Log("CollisionMaterialChange added");
 
         }
 

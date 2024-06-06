@@ -12,6 +12,7 @@ namespace UnityEngine.XR.Interaction.Toolkit.Samples.ARStarterAssets
         [SerializeField] ObjectSpawner m_ObjectSpawner;
 
         [SerializeField] Material furnitureMaterial;
+        [SerializeField] Material collisionMaterial;
 
         [SerializeField] public GameObject InteractionAffordance;
         [SerializeField] public GameObject DeleteButton;
@@ -62,8 +63,11 @@ namespace UnityEngine.XR.Interaction.Toolkit.Samples.ARStarterAssets
                 furniture.AddComponent<MeshCombiner>();
                 furniture.GetComponent<MeshCombiner>().interactionAffordance = InteractionAffordance;
                 furniture.GetComponent<MeshCombiner>().deleteButton = DeleteButton;
+                furniture.GetComponent<MeshCombiner>().collisionMaterial = collisionMaterial;
+                furniture.GetComponent<MeshCombiner>().furnitureMaterial = furnitureMaterial;
                 furniture.GetComponent<MeshRenderer>().material = furnitureMaterial;
                 furniture.layer = 8;
+                furniture.tag = "CollisionDetection";
 
                 furniture.transform.parent = m_ObjectSpawner.transform;
                 m_ObjectSpawner.objToSpawn = furniture;
