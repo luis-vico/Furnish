@@ -24,6 +24,10 @@ public class DeleteButton : MonoBehaviour
     }
 
     public void deleteParent(){
+        foreach(GameObject obj in parentObj.GetComponent<CollisionMaterialChange>().collisionEnterObj){
+            obj.GetComponent<CollisionMaterialChange>().collisionEnterObj.Remove(parentObj);
+            obj.GetComponent<MeshRenderer>().material = obj.GetComponent<CollisionMaterialChange>().furnitureMaterial;
+        }
         Destroy(parentObj);
     }
 }

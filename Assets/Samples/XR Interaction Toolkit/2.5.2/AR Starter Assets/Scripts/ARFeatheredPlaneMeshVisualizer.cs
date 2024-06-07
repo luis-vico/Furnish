@@ -17,6 +17,10 @@ namespace UnityEngine.XR.Interaction.Toolkit.Samples.ARStarterAssets
         [SerializeField]
         float m_FeatheringWidth = 0.2f;
 
+        public LineRenderer Line;
+        public MeshCollider collider;
+        public GameObject borderCollider;
+
         /// <summary>
         /// The width of the texture feathering (in world units).
         /// </summary>
@@ -99,6 +103,31 @@ namespace UnityEngine.XR.Interaction.Toolkit.Samples.ARStarterAssets
 
             mesh.SetUVs(1, s_FeatheringUVs);
             mesh.UploadMeshData(false);
+
+            //Create LineRenderer Mesh
+            //MeshCollider collider = GetComponentsInChildren<MeshCollider>()[0];
+            //MeshCollider collider = transform.GetChild(0).gameObject.GetComponent<MeshCollider>();
+            
+            //MeshCollider collider = null;
+
+            //if(collider == null){
+            //    transform.GetChild(0).gameObject.AddComponent<MeshCollider>();
+            //    collider = transform.GetChild(0).gameObject.GetComponent<MeshCollider>();
+            //    collider.convex = true;
+            //}
+            //GameObject BorderCollider = Instantiate(borderCollider, gameObject.transform);
+            //BorderCollider.AddComponent<LineRenderer>();
+            //for(int i = 0; i < GetComponent<LineRenderer>().positionCount; i++){
+            //    BorderCollider.GetComponent<LineRenderer>().SetPosition(i, GetComponent<LineRenderer>().GetPosition(i));
+            //}
+            //Mesh lineMesh = new Mesh();
+            //Line.BakeMesh(lineMesh);
+            //BorderCollider.GetComponent<LineRenderer>().BakeMesh(lineMesh);
+            //collider.sharedMesh = lineMesh;
+            //BorderCollider.GetComponent<MeshCollider>().sharedMesh = lineMesh;
+            
+            
+
         }
 
         static List<Vector3> s_FeatheringUVs = new List<Vector3>();

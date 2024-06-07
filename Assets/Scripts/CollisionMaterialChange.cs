@@ -6,11 +6,19 @@ public class CollisionMaterialChange : MonoBehaviour
 {
     public Material furnitureMaterial;
     public Material collisionMaterial;
+    public List<GameObject> collisionEnterObj = new List<GameObject>();
 
-    private void OnCollisionExit(Collision collision) 
+    void OnCollisionExit(Collision collision) 
     {
         if(furnitureMaterial != null && collision.gameObject.tag == "CollisionDetection"){
             gameObject.GetComponent<MeshRenderer>().material = furnitureMaterial;
+            collisionEnterObj.Remove(collision.gameObject);
+        }
+    }
+
+    void OnCollisionEnter(Collision collision){
+        if(collision.gameObject.tag == "CollisionDetection" && collision.gameObject.GetComponent<CollisionMaterialChange>() != null){
+            collisionEnterObj.Add(collision.gameObject);
         }
     }
 
