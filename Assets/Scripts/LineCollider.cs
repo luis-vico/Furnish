@@ -21,7 +21,7 @@ namespace UnityEngine.XR.ARFoundation
             yield return new WaitForSeconds(5);
             planeArray = GameObject.FindGameObjectsWithTag("ARPlane");
             foreach(GameObject obj in planeArray){
-                GameObject BorderCollider = Instantiate(BorderColliderPrefab, obj.transform);
+                GameObject BorderCollider = Instantiate(BorderColliderPrefab);
                 BorderCollider.GetComponent<LineRenderer>().positionCount  = obj.GetComponent<LineRenderer>().positionCount;
                 for(int i = 0; i < obj.GetComponent<LineRenderer>().positionCount; i++){
                     BorderCollider.GetComponent<LineRenderer>().SetPosition(i, obj.GetComponent<LineRenderer>().GetPosition(i));

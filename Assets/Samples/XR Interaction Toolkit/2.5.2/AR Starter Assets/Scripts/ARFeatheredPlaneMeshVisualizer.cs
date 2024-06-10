@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.XR.ARFoundation;
+using UnityEngine.XR.ARSubsystems;
 
 namespace UnityEngine.XR.Interaction.Toolkit.Samples.ARStarterAssets
 {
@@ -16,10 +17,7 @@ namespace UnityEngine.XR.Interaction.Toolkit.Samples.ARStarterAssets
         [Tooltip("The width of the texture feathering (in world units).")]
         [SerializeField]
         float m_FeatheringWidth = 0.2f;
-
-        public LineRenderer Line;
-        public MeshCollider collider;
-        public GameObject borderCollider;
+        public GameObject WallCollider;
 
         /// <summary>
         /// The width of the texture feathering (in world units).
@@ -35,6 +33,7 @@ namespace UnityEngine.XR.Interaction.Toolkit.Samples.ARStarterAssets
             m_PlaneMeshVisualizer = GetComponent<ARPlaneMeshVisualizer>();
             m_FeatheredPlaneMaterial = GetComponent<MeshRenderer>().material;
             m_Plane = GetComponent<ARPlane>();
+            UpdateCollision(m_Plane.classification);
         }
 
         void OnEnable()
@@ -103,31 +102,18 @@ namespace UnityEngine.XR.Interaction.Toolkit.Samples.ARStarterAssets
 
             mesh.SetUVs(1, s_FeatheringUVs);
             mesh.UploadMeshData(false);
-
-            //Create LineRenderer Mesh
-            //MeshCollider collider = GetComponentsInChildren<MeshCollider>()[0];
-            //MeshCollider collider = transform.GetChild(0).gameObject.GetComponent<MeshCollider>();
             
-            //MeshCollider collider = null;
+        }
 
-            //if(collider == null){
-            //    transform.GetChild(0).gameObject.AddComponent<MeshCollider>();
-            //    collider = transform.GetChild(0).gameObject.GetComponent<MeshCollider>();
-            //    collider.convex = true;
-            //}
-            //GameObject BorderCollider = Instantiate(borderCollider, gameObject.transform);
-            //BorderCollider.AddComponent<LineRenderer>();
-            //for(int i = 0; i < GetComponent<LineRenderer>().positionCount; i++){
-            //    BorderCollider.GetComponent<LineRenderer>().SetPosition(i, GetComponent<LineRenderer>().GetPosition(i));
-            //}
-            //Mesh lineMesh = new Mesh();
-            //Line.BakeMesh(lineMesh);
-            //BorderCollider.GetComponent<LineRenderer>().BakeMesh(lineMesh);
-            //collider.sharedMesh = lineMesh;
-            //BorderCollider.GetComponent<MeshCollider>().sharedMesh = lineMesh;
-            
-            
-
+        void UpdateCollision(PlaneClassification classification){
+            if(classification.HasFlag(PlaneClassification.Floor)){
+                Destroy(m_Plane.GetComponent<MeshCollider>());
+            }
+            if(classification.HasFlag(PlaneClassification.Wall)){ 
+                Destroy(m_Plane.GetComponent<MeshFilter>());
+                Destroy(m_Plane.GetComponent<MeshRenderer>());
+                Destroy(m_Plane.GetComponent<LineRenderer>());
+            }
         }
 
         static List<Vector3> s_FeatheringUVs = new List<Vector3>();

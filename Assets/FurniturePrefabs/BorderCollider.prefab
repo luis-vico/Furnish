@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6250109068667132184}
   - component: {fileID: 1006285105318550264}
-  - component: {fileID: 1394846699110347751}
+  - component: {fileID: 9129388667372701218}
   - component: {fileID: 7631129843410800106}
   m_Layer: 0
   m_Name: BorderCollider
@@ -56,7 +56,7 @@ MeshCollider:
   m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: 0}
---- !u!54 &1394846699110347751
+--- !u!54 &9129388667372701218
 Rigidbody:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -128,13 +128,13 @@ LineRenderer:
   m_Positions: []
   m_Parameters:
     serializedVersion: 3
-    widthMultiplier: 1
+    widthMultiplier: 0.02
     widthCurve:
       serializedVersion: 2
       m_Curve:
       - serializedVersion: 3
         time: 0
-        value: 0.13497233
+        value: 0.52147746
         inSlope: 0
         outSlope: 0
         tangentMode: 0
@@ -183,5 +183,5 @@ LineRenderer:
     generateLightingData: 0
   m_MaskInteraction: 0
   m_UseWorldSpace: 1
-  m_Loop: 0
+  m_Loop: 1
   m_ApplyActiveColorSpace: 1
