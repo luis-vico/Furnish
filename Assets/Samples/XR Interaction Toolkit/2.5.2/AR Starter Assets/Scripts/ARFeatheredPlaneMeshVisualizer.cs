@@ -114,6 +114,10 @@ namespace UnityEngine.XR.Interaction.Toolkit.Samples.ARStarterAssets
                 Destroy(m_Plane.GetComponent<MeshRenderer>());
                 Destroy(m_Plane.GetComponent<LineRenderer>());
             }
+            if(classification.HasFlag(PlaneClassification.Door)){
+                Destroy(m_Plane.GetComponent<MeshFilter>());
+                Destroy(m_Plane.GetComponent<MeshRenderer>());
+            }
         }
 
         static List<Vector3> s_FeatheringUVs = new List<Vector3>();
